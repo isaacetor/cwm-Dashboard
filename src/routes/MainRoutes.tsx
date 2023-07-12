@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../components/layout/dashlayout/dashboard_layout";
 import Register from "../pages/auth/Register";
 import Dashboard from "../pages/home/dashboard";
+import ErrorBoundary from "../utils/errorHandlers/errorboundary";
 
 export const element = createBrowserRouter([
   {
@@ -22,7 +23,12 @@ export const element = createBrowserRouter([
         index: true,
         element: <Dashboard />,
         hasErrorBoundary: true,
-        errorElement: <p>error with this page</p>,
+        errorElement: (
+          <ErrorBoundary>
+            <p></p>
+          </ErrorBoundary>
+        ),
+        ErrorBoundary: null,
       },
     ],
   },
