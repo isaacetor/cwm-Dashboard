@@ -2,7 +2,7 @@ import Header from "../../blocks/homeblock/Header";
 import Footer from "../../blocks/homeblock/Footer";
 import { Outlet } from "react-router-dom";
 
-const HomeLayout = () => {
+const AuthLayout = () => {
   return (
     <div>
       <Header />
@@ -12,4 +12,4 @@ const HomeLayout = () => {
   );
 };
 
-export default HomeLayout;
+export default AuthLayout;
