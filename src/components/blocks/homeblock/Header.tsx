@@ -10,9 +10,13 @@ const Header = () => {
       {/* logo and name */}
       {/* desktop logo view */}
       <div className="flex items-center gap-3  pb-8 ">
-        <div className="py-2 px-3 border border-[#FF6E00] text-xl  rounded-full">
-          M
+        {/* circle over text */}
+        <div className="border p-1 border-[#FF6E00] rounded-full">
+          <div className="py-[1px] px-[6px] bg-[#DBDEE2] text-white  text-xl  rounded-full">
+            M
+          </div>
         </div>
+
         {/* name */}
         <p className="text-slate-500">Area name</p>
       </div>
@@ -22,14 +26,14 @@ const Header = () => {
       <div className="flex flex-col justify-between h-full max-lg:hidden">
         {/* first nav */}
         <div className="">
-          <div className="flex flex-col gap-3 items-start">
+          <div className="flex flex-col gap-5 items-start">
             <Navprop text="Home" icon={<MdDashboard />} route="" />
             <Navprop text="Payment" icon={<MdOutlinePayment />} route="" />
           </div>
           <br />
           <p className="text-[#6b6a6a]">tools</p>
           <br />
-          <div className="flex flex-col gap-3 items-start">
+          <div className="flex flex-col gap-5 items-start">
             <Navprop text="Bills" icon={<BsReceipt />} route="" />
             <Navprop text="History" icon={<MdManageHistory />} route="" />
           </div>
@@ -37,7 +41,7 @@ const Header = () => {
         {/* support nav */}
 
         <div>
-          <div className="flex flex-col gap-3 items-start">
+          <div className="flex flex-col gap-5 items-start">
             <Navprop text="support" icon={<BiHeart />} route="" />
             <Navprop text="log out" icon={<RiLogoutCircleLine />} route="" />
           </div>
