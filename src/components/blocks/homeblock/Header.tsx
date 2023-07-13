@@ -27,23 +27,59 @@ const Header = () => {
         {/* first nav */}
         <div className="">
           <div className="flex flex-col gap-5 items-start">
-            <Navprop text="Home" icon={<MdDashboard />} route="" />
-            <Navprop text="Payment" icon={<MdOutlinePayment />} route="" />
+            <Navprop
+              text="Home"
+              icon={<MdDashboard />}
+              route=""
+              color="[#FF6E00]"
+              size="xl"
+            />
+            <Navprop
+              text="Payment"
+              icon={<MdOutlinePayment />}
+              route=""
+              color="[#FF6E00]"
+              size="xl"
+            />
           </div>
           <br />
           <p className="text-[#6b6a6a]">tools</p>
           <br />
           <div className="flex flex-col gap-5 items-start">
-            <Navprop text="Bills" icon={<BsReceipt />} route="" />
-            <Navprop text="History" icon={<MdManageHistory />} route="" />
+            <Navprop
+              text="Bills"
+              icon={<BsReceipt />}
+              route=""
+              color="[#FF6E00]"
+              size="xl"
+            />
+            <Navprop
+              text="History"
+              icon={<MdManageHistory />}
+              route=""
+              color="[#FF6E00]"
+              size="xl"
+            />
           </div>
         </div>
         {/* support nav */}
 
         <div>
           <div className="flex flex-col gap-5 items-start">
-            <Navprop text="support" icon={<BiHeart />} route="" />
-            <Navprop text="log out" icon={<RiLogoutCircleLine />} route="" />
+            <Navprop
+              text="support"
+              icon={<BiHeart />}
+              route=""
+              color="[#FF6E00]"
+              size="xl"
+            />
+            <Navprop
+              text="log out"
+              icon={<RiLogoutCircleLine />}
+              route=""
+              color="[#FF6E00]"
+              size="xl"
+            />
           </div>
         </div>
       </div>

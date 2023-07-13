@@ -3,4 +3,6 @@ export type navpropsData = {
   text?: string;
   titleText?: string;
   route: string;
+  color: string;
+  size: string;
 };
