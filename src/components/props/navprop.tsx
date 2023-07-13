@@ -10,7 +10,7 @@ const Navprop: FC<navpropsData> = ({ text, icon, route }) => {
         className="flex items-center justify-center gap-2 hover:scale-[1.15] transition-all ease-in duration-150"
       >
         {/* icon */}
-        <p className="text-xl mb-[0.17rem] pl-1 text-[#fa8128]">{icon}</p>
+        <p className="text-xl mb-[0.17rem] pl-1 text-[#FF6E00]">{icon}</p>
 
         {/* nav */}
         <p className="max-lg:hidden">{text}</p>
