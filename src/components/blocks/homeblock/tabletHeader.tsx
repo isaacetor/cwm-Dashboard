@@ -11,7 +11,7 @@ const TabletHeader = () => {
         <div className="w-[95%] h-[95%] flex flex-col  items-center gap-6 ">
           {/* logo */}
           <h1 className="text-3xl text-white">DE</h1>
-          <hr className=" bg-[#a9afbc00] w-full" />
+          <hr className=" w-full" />
 
           {/* navigation */}
           <div className="h-full flex flex-col justify-between">
@@ -22,6 +22,7 @@ const TabletHeader = () => {
                 color="white"
                 size="3xl"
               />
+
               <Navprop
                 icon={<MdOutlinePayment />}
                 route=""
