@@ -1,9 +1,17 @@
 import FeatureBlock from "./featureBlock";
 import { TbRecycle, TbCurrencyNaira } from "react-icons/tb";
 import { BiSolidHelpCircle } from "react-icons/bi";
-import { greetUser } from "../../reusables/greetingFunction";
+import { greetUser } from "../../../reusables/greetingFunction";
+import { useState } from "react";
+import CustomRequest from "../../../modal/customRequest";
 
 const RecomendedLinks = () => {
+  const [state, setState] = useState(false);
+
+  const toggle = () => {
+    setState(!state);
+  };
+
   return (
     <div className="py-7 bg-white ">
       <div className="grid h-full gap-3 grid-cols-5 max-lg:grid-cols-4 max-md:block">
@@ -20,12 +28,17 @@ const RecomendedLinks = () => {
           titleText="Make a payment"
           route=""
         />
-        <FeatureBlock
-          icon={<BiSolidHelpCircle />}
-          text="request for waste evacuation"
-          titleText="make custom request"
-          route=""
-        />
+        {/* custom request */}
+
+        <div onClick={toggle}>
+          <FeatureBlock
+            icon={<BiSolidHelpCircle />}
+            text="request for waste evacuation"
+            titleText="make custom request"
+            route=""
+          />
+        </div>
+
         <FeatureBlock
           icon={<TbRecycle />}
           text="sell recyclabe waste"
@@ -33,6 +46,8 @@ const RecomendedLinks = () => {
           route=""
         />
       </div>
+
+      {state ? <CustomRequest state={state} setState={setState} /> : null}
     </div>
   );
 };

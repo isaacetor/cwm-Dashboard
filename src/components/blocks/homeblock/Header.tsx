@@ -30,14 +30,14 @@ const Header = () => {
             <Navprop
               text="Home"
               icon={<MdDashboard />}
-              route=""
+              route="home"
               color="[#FF6E00]"
               size="xl"
             />
             <Navprop
               text="Payment"
               icon={<MdOutlinePayment />}
-              route=""
+              route="payment"
               color="[#FF6E00]"
               size="xl"
             />

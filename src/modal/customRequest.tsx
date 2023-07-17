@@ -1,7 +1,12 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 
-const customRequest = () => {
-  const [state, setState] = useState(true);
+type stateData = {
+  state: boolean;
+  setState: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const CustomRequest: FC<stateData> = ({ state, setState }) => {
+  [state, setState] = useState(true);
 
   return state ? (
     <div className="fixed inset-0 z-10 overflow-y-auto">
@@ -31,8 +36,8 @@ const customRequest = () => {
             </button>
           </div>
           <div className="max-w-sm mx-auto py-3 space-y-3 text-center">
-            <h4 className="text-lg font-medium text-gray-800">
-              Sign up for our newsletter
+            <h4 className="text-lg capitalize font-medium text-gray-800">
+              Request our service
             </h4>
             <p className="text-[15px] text-gray-600">
               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -54,23 +59,22 @@ const customRequest = () => {
                     d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
                   />
                 </svg>
-                <input
-                  type="text"
+                <textarea
+                  rows={1.5}
+                  cols={30}
                   placeholder="Enter your email"
-                  className="w-full pl-12 pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                  className="w-full pl-12 pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:orange-indigo-600 shadow-sm rounded-lg"
                 />
               </div>
-              <button className="block w-full mt-3 py-3 px-4 font-medium text-sm text-center text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 rounded-lg ring-offset-2 ring-indigo-600 focus:ring-2">
-                Subscribe
+              <button className="block capitalize w-full mt-3 py-3 px-4 font-medium text-sm text-center text-white bg-orange-600 hover:bg-indigo-500 active:bg-orange-700 rounded-lg ring-offset-2 ring-orange-600 focus:ring-2">
+                send request
               </button>
             </form>
           </div>
         </div>
       </div>
     </div>
-  ) : (
-    ""
-  );
+  ) : null;
 };
 
-export default customRequest;
+export default CustomRequest;

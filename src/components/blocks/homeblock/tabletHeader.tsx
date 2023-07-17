@@ -25,7 +25,7 @@ const TabletHeader = () => {
 
               <Navprop
                 icon={<MdOutlinePayment />}
-                route=""
+                route="payment"
                 color="white"
                 size="3xl"
               />
