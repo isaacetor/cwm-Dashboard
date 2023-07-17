@@ -29,7 +29,7 @@ const RecomendedLinks = () => {
         <FeatureBlock
           icon={<TbRecycle />}
           text="sell recyclabe waste"
-          titleText="Make a payment"
+          titleText="Earn with us"
           route=""
         />
       </div>

@@ -1,3 +1,5 @@
+import HistoryBlock from "../../components/blocks/dashboardblock/HistoryBlock";
+import PaymentBlock from "../../components/blocks/dashboardblock/PaymentBlock";
 import Heading from "../../components/blocks/dashboardblock/heading";
 import RecomendedLinks from "../../components/blocks/dashboardblock/recomendedLinks";
 
@@ -15,7 +17,14 @@ const Dashboard = () => {
       {/* account overview */}
       <div className="mt-16">
         <p className="text-xl">Account Overview</p>
-        <div className="w-full h-[50vh] border border-gray-200 mt-5 rounded-md"></div>
+        <div className="w-full p-7  border border-gray-200 mt-5 rounded-md grid gap-8 grid-cols-3 max-lg:grid-cols-1">
+          <div className="max-lg:order-2 col-span-2">
+            <HistoryBlock />
+          </div>
+          <div className="max-lg:order-1 h-full">
+            <PaymentBlock />
+          </div>
+        </div>
       </div>
     </div>
   );
