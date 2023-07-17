@@ -1,5 +1,6 @@
 import React from "react";
 import Heading from "../../components/blocks/dashboardblock/heading";
+import PaymentTab from "../../components/blocks/Dashpaymentblock/PaymentTab";
 
 const Payment = () => {
   return (
@@ -7,10 +8,10 @@ const Payment = () => {
       <div className="max-md:hidden sticky top-0 ">
         <Heading title="Payment" />
       </div>
-      {/* greeting with links */}
-      {/* <div className="mb-3">
-        <RecomendedLinks />
-      </div> */}
+      {/* payment tab */}
+      <div className="mb-3">
+        <PaymentTab />
+      </div>
 
       {/* account overview */}
       {/* <div className="mt-16">
