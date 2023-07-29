@@ -7,6 +7,8 @@ import Payment from "../pages/home/Payment";
 import Login from "../pages/auth/Login";
 import NotFound from "../utils/errorHandlers/NotFound";
 import { Suspense } from "react";
+import Bills from "../pages/home/Bills";
+import History from "../pages/home/History";
 
 // const DashboardLayout = import()
 
@@ -60,6 +62,22 @@ export const element = createBrowserRouter([
         element: (
           <Suspense fallback={<p>loading</p>}>
             <Payment />
+          </Suspense>
+        ),
+      },
+      {
+        path: "bills",
+        element: (
+          <Suspense fallback={<p>loading</p>}>
+            <Bills />
+          </Suspense>
+        ),
+      },
+      {
+        path: "history",
+        element: (
+          <Suspense fallback={<p>loading</p>}>
+            <History />
           </Suspense>
         ),
       },
