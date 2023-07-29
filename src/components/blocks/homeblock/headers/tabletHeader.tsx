@@ -29,10 +29,15 @@ const TabletHeader = () => {
                 color="white"
                 size="3xl"
               />
-              <Navprop icon={<BsReceipt />} route="" color="white" size="3xl" />
+              <Navprop
+                icon={<BsReceipt />}
+                route="bills"
+                color="white"
+                size="3xl"
+              />
               <Navprop
                 icon={<MdManageHistory />}
-                route=""
+                route="history"
                 color="white"
                 size="3xl"
               />

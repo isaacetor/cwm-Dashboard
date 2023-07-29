@@ -16,7 +16,7 @@ const SwitchHeader = () => {
                 M
               </div>
             </div>
-            <p className="text-[11px] text-white">Area name</p>
+            <p className="text-[11px] text-center text-white">Area name</p>
           </div>
           <hr className="w-full" />
           {/* navigation */}
@@ -35,10 +35,15 @@ const SwitchHeader = () => {
                 color="white"
                 size="3xl"
               />
-              <Navprop icon={<BsReceipt />} route="" color="white" size="3xl" />
+              <Navprop
+                icon={<BsReceipt />}
+                route="bills"
+                color="white"
+                size="3xl"
+              />
               <Navprop
                 icon={<MdManageHistory />}
-                route=""
+                route="history"
                 color="white"
                 size="3xl"
               />

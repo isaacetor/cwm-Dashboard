@@ -8,7 +8,7 @@ const PaymentTab = () => {
     <div className="">
       <ul
         role="tablist"
-        className="max-w-screen-xl mx-auto border-b flex items-center gap-x-3 overflow-x-auto text-sm"
+        className="mx-auto border-b flex items-center gap-x-3 overflow-x-auto text-sm"
       >
         {tabItems.map((item, idx) => (
           <li
