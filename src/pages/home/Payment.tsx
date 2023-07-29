@@ -1,4 +1,3 @@
-import React from "react";
 import Heading from "../../components/blocks/dashboardblock/heading";
 import PaymentTab from "../../components/blocks/Dashpaymentblock/PaymentTab";
 

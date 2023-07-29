@@ -4,7 +4,11 @@ export default {
   theme: {
     extend: {
       backgroundColor: {
-        primaryColor: "#FF6E00",
+        primaryColor: "#4F46E5",
+      },
+      backgroundImage: {
+        hero: "url('./assets/bg.svg')",
+        "footer-texture": "url('/img/footer-texture.png')",
       },
     },
   },

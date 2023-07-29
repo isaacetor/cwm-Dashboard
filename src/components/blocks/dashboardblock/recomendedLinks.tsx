@@ -14,7 +14,7 @@ const RecomendedLinks = () => {
 
   return (
     <div className="py-7 bg-white ">
-      <div className="grid h-full gap-3 grid-cols-5 max-lg:grid-cols-4 max-md:block">
+      <div className="grid h-full gap-3 grid-cols-5 max-lg:grid-cols-4 max-md:block max-md:grid-cols-2">
         <div className="col-span-2 flex justify-center flex-col h-full text-slate-700">
           <h1 className="text-3xl">{greetUser("Isaac")}</h1>
           <p className="text-gray-500 font-light">

@@ -1,18 +1,24 @@
 import { MdDashboard, MdManageHistory, MdOutlinePayment } from "react-icons/md";
-import Navprop from "../../props/navprop";
+import Navprop from "../../../props/navprop";
 import { BsReceipt } from "react-icons/bs";
 import { BiHeart } from "react-icons/bi";
 import { RiLogoutCircleLine } from "react-icons/ri";
 
-const TabletHeader = () => {
+const SwitchHeader = () => {
   return (
-    <div className="w-full h-full hidden bg-primaryColor max-lg:block max-md:hidden">
+    <div className="w-full h-full  bg-primaryColor max-lg:hidden">
       <div className="w-full h-full flex items-center justify-center ">
         <div className="w-[95%] h-[95%] flex flex-col  items-center gap-6 ">
           {/* logo */}
-          <h1 className="text-3xl text-white">DE</h1>
-          <hr className=" w-full" />
-
+          <div className="flex justify-center items-center flex-col gap-2">
+            <div className="p-1 border-white border rounded-full">
+              <div className="py-[1px] px-[6px] bg-[#DBDEE2] text-white  text-xl  rounded-full">
+                M
+              </div>
+            </div>
+            <p className="text-[11px] text-white">Area name</p>
+          </div>
+          <hr className="w-full" />
           {/* navigation */}
           <div className="h-full flex flex-col justify-between">
             <div className="flex flex-col gap-8">
@@ -55,4 +61,4 @@ const TabletHeader = () => {
   );
 };
 
-export default TabletHeader;
+export default SwitchHeader;

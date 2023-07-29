@@ -15,7 +15,7 @@ const PaymentTab = () => {
             key={idx}
             className={`py-2 border-b-2 ${
               selectedItem === idx
-                ? "border-orange-600 text-orange-600"
+                ? "border-indigo-600 text-indigo-600"
                 : "border-white text-gray-500"
             }`}
           >
@@ -23,7 +23,7 @@ const PaymentTab = () => {
               role="tab"
               aria-selected={selectedItem === idx}
               aria-controls={`tabpanel-${idx + 1}`}
-              className={`py-2.5 rounded-lg duration-150 hover:text-orange-600 border-transparent   font-medium ${
+              className={`py-2.5 rounded-lg duration-150 hover:text-indigo-600 border-transparent   font-medium ${
                 idx === 0 ? "mr-3" : ""
               } `} // Added text-left class to align the button text to the left
               onClick={() => setSelectedItem(idx)}

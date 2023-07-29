@@ -1,5 +1,4 @@
 import { LiaUserCircle } from "react-icons/lia";
-import Notifications from "../homeblock/notifications";
 import { FC, useState } from "react";
 
 type headerdata = {
@@ -21,11 +20,11 @@ const Heading: FC<headerdata> = ({ title }) => {
         <LiaUserCircle />
       </p>
 
-      {show ? (
+      {/* {show ? (
         <div className="absolute top-[10vh] right-0 w-[20%] h-[90vh]">
           <Notifications />
         </div>
-      ) : null}
+      ) : null} */}
     </div>
   );
 };

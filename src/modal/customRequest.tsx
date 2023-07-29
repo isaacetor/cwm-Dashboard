@@ -63,10 +63,10 @@ const CustomRequest: FC<stateData> = ({ state, setState }) => {
                   rows={1.5}
                   cols={30}
                   placeholder="Enter your email"
-                  className="w-full pl-12 pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:orange-indigo-600 shadow-sm rounded-lg"
+                  className="w-full pl-12 pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:indigo-indigo-600 shadow-sm rounded-lg"
                 />
               </div>
-              <button className="block capitalize w-full mt-3 py-3 px-4 font-medium text-sm text-center text-white bg-orange-600 hover:bg-orange-500 active:bg-orange-700 rounded-lg ring-offset-2 ring-orange-600 focus:ring-2">
+              <button className="block capitalize w-full mt-3 py-3 px-4 font-medium text-sm text-center text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 rounded-lg ring-offset-2 ring-indigo-600 focus:ring-2">
                 send request
               </button>
             </form>
