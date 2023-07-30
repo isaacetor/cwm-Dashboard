@@ -15,7 +15,7 @@ const HomeLayout = () => {
       <div
         className={`${
           show ? "w-[17%]" : "w-[5%]"
-        } max-md:w-full h-screen max-md:h-full max-lg:w-[8%]  flex items-center justify-center sticky top-0`}
+        } max-md:w-full h-screen max-md:h-full max-lg:w-[8%]  flex items-center justify-center sticky top-0 transition-all ease-linear duration-[200ms]`}
       >
         {show ? <Header /> : <SwitchHeader />}
 
@@ -31,13 +31,13 @@ const HomeLayout = () => {
       </div>
 
       {/* notification */}
-      <div className="w-[25%] hidden transition-all duration-100 ease-in-out ">
+      <div className="w-[25%] hidden transition-all ease-in duration-500 ">
         <Notifications />
       </div>
 
       {/* switch */}
       <div
-        className={`py-3 px-2 bg-black text-white rounded-full absolute ${
+        className={`py-3 transition-all ease-in duration-[200ms] px-2 bg-black text-white rounded-full absolute ${
           show ? "left-[13rem]" : "left-[3rem]"
         } top-16 max-lg:hidden cursor-pointer `}
         onClick={() => {

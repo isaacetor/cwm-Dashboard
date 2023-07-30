@@ -66,13 +66,15 @@ const Header = () => {
 
         <div>
           <div className="flex flex-col gap-5 items-start">
-            <Navprop
-              text="support"
-              icon={<BiHeart />}
-              route=""
-              color="[#4F46E5]"
-              size="xl"
-            />
+            <a href="mailto:isaacetor7@gmail.com">
+              <Navprop
+                text="support"
+                icon={<BiHeart />}
+                route=""
+                color="[#4F46E5]"
+                size="xl"
+              />
+            </a>
             <Navprop
               text="log out"
               icon={<RiLogoutCircleLine />}
