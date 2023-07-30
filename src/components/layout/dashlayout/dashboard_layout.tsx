@@ -39,7 +39,7 @@ const HomeLayout = () => {
       <div
         className={`py-3 px-2 bg-black text-white rounded-full absolute ${
           show ? "left-[13rem]" : "left-[3rem]"
-        } top-16 max-lg:hidden `}
+        } top-16 max-lg:hidden cursor-pointer `}
         onClick={() => {
           setSHow(!show);
         }}

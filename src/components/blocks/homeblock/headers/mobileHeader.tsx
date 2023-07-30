@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const MobileHeader = () => {
   const [state, setState] = useState(false);
@@ -7,8 +8,8 @@ const MobileHeader = () => {
   const navigation = [
     { title: "Home", path: "" },
     { title: "Payment", path: "/dashboard/payment" },
-    { title: "Bills", path: "#faq" },
-    { title: "History", path: "#subscribe" },
+    { title: "Bills", path: "/dashboard/bills" },
+    { title: "History", path: "/dashboard/history" },
   ];
 
   return (
@@ -70,9 +71,9 @@ const MobileHeader = () => {
             {navigation.map((item, idx) => {
               return (
                 <li key={idx} className="text-white hover:text-white">
-                  <a href={item.path} className="block hover:text-white">
+                  <NavLink to={item.path} className="block hover:text-white">
                     {item.title}
-                  </a>
+                  </NavLink>
                 </li>
               );
             })}
