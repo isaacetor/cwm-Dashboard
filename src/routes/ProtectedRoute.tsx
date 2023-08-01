@@ -6,7 +6,7 @@ interface ProtectedRouteProps {
 }
 
 const user = {
-  name: "i",
+  name: "",
 };
 
 // when user not signed in
