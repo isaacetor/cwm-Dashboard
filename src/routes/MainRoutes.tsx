@@ -9,6 +9,7 @@ import NotFound from "../utils/errorHandlers/NotFound";
 import { Suspense } from "react";
 import Bills from "../pages/home/Bills";
 import History from "../pages/home/History";
+import { ProtectedRoute, SignedInProtectedRoute } from "./ProtectedRoute";
 
 // const DashboardLayout = import()
 
@@ -19,9 +20,11 @@ export const element = createBrowserRouter([
       {
         index: true,
         element: (
-          <Suspense fallback={<p>loading</p>}>
-            <Register />
-          </Suspense>
+          <SignedInProtectedRoute>
+            <Suspense fallback={<p>loading</p>}>
+              <Register />
+            </Suspense>
+          </SignedInProtectedRoute>
         ),
       },
       {
@@ -37,9 +40,11 @@ export const element = createBrowserRouter([
   {
     path: "/dashboard",
     element: (
-      <Suspense fallback={<p>loading</p>}>
-        <DashboardLayout />
-      </Suspense>
+      <ProtectedRoute>
+        <Suspense fallback={<p>loading</p>}>
+          <DashboardLayout />
+        </Suspense>
+      </ProtectedRoute>
     ),
     children: [
       {
