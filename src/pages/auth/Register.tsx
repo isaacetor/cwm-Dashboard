@@ -4,9 +4,9 @@ import logo from "../../assets/twma.png";
 const Register = () => {
   return (
     <div className="w-[50%] h-[90vh] flex justify-start items-center max-md:w-full max-md:justify-center">
-      <div className="w-[48%] h-[80%] flex flex-col gap-2 max-lg:w-[310px]">
+      <div className="w-[48%] h-[80%] flex flex-col gap-2 max-lg:w-[310px] max-sm:w-full">
         {/* top */}
-        <div className="w-full h-[90%]  bg-gradient-to-r from-indigo-500 to-orange-500  p-[1.2px]">
+        <div className="w-full h-[90%]  bg-gradient-to-r from-indigo-500 to-orange-500  p-[1.2px] max-md:bg-none max-md:h-full">
           <div className="w-full flex flex-col justify-center h-full bg-white py-7 px-8">
             {/* logo */}
             <div className="w-full grid place-items-center mb-6">
@@ -109,7 +109,7 @@ const Register = () => {
         </div>
 
         {/* bottom */}
-        <div className="w-full h-[10%] bg-gradient-to-r from-indigo-500 to-orange-500  p-[1.2px]">
+        <div className="w-full h-[10%] bg-gradient-to-r from-indigo-500 to-orange-500  p-[1.2px] max-md:bg-none ">
           <div className="w-full h-full bg-white p-4 flex justify-center gap-1 text-sm">
             Don't have an account?{" "}
             <NavLink
