@@ -13,7 +13,10 @@ const Register = () => {
               <img src={logo} alt="twma logo" width={150} height={150} />
             </div>
             {/* form */}
-            <form className="flex flex-col gap-2">
+            <form
+              className="flex flex-col gap-2"
+              onSubmit={(e) => e.preventDefault()}
+            >
               <label className="relative bg-[#f5f5f5] block overflow-hidden border border-gray-200 px-3 pt-3 shadow-sm focus-within:border-[var(--primary-color)] focus-within:ring-1 focus-within:ring-[var(--primary-color)]">
                 <input
                   type="text"
@@ -100,7 +103,7 @@ const Register = () => {
 
               <button
                 type="submit"
-                className="mt-5 py-2 px-3 bg-[var(--primary-color)] text-indigo-500"
+                className="my-5 py-2 px-3 bg-[var(--primary-color)] text-white"
               >
                 Register
               </button>
@@ -111,12 +114,12 @@ const Register = () => {
         {/* bottom */}
         <div className="w-full h-[10%] bg-gradient-to-r from-indigo-500 to-orange-500  p-[1.2px] max-md:bg-none ">
           <div className="w-full h-full bg-white p-4 flex justify-center gap-1 text-sm">
-            Don't have an account?{" "}
+            Already have an account?{" "}
             <NavLink
               to="/login"
               className="text-[var(--accent-color)] font-semibold"
             >
-              Sign up
+              Sign in
             </NavLink>
           </div>
         </div>
