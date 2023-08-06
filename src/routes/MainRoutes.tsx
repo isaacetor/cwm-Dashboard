@@ -10,22 +10,24 @@ import { Suspense } from "react";
 import Bills from "../pages/home/Bills";
 import History from "../pages/home/History";
 import { ProtectedRoute, SignedInProtectedRoute } from "./ProtectedRoute";
+import AuthLayout from "../components/layout/auth/authlayout";
 
 // const DashboardLayout = import()
 
 export const element = createBrowserRouter([
   {
     path: "/",
+    element: (
+      <SignedInProtectedRoute>
+        <Suspense fallback={<p>loading</p>}>
+          <AuthLayout />
+        </Suspense>
+      </SignedInProtectedRoute>
+    ),
     children: [
       {
         index: true,
-        element: (
-          <SignedInProtectedRoute>
-            <Suspense fallback={<p>loading</p>}>
-              <Register />
-            </Suspense>
-          </SignedInProtectedRoute>
-        ),
+        element: <Register />,
       },
       {
         path: "login",

@@ -1,12 +1,15 @@
-import Header from "../../blocks/homeblock/headers/Header";
-import Footer from "../../blocks/homeblock/Footer";
 import { Outlet } from "react-router-dom";
+import AuthHeader from "../../common/authHeader";
+import Footer from "../../blocks/homeblock/Footer";
 
 const AuthLayout = () => {
   return (
     <div>
-      <Header />
-      <Outlet />
+      <div className="flex gap-10">
+        <AuthHeader />
+        <Outlet />
+      </div>
+
       <Footer />
     </div>
   );

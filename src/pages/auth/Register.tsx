@@ -1,106 +1,126 @@
-import { Link } from "react-router-dom";
-// import useSWR from "swr";
-// import { createClient } from "../../utils/api";
+import { NavLink } from "react-router-dom";
+import logo from "../../assets/twma.png";
 
 const Register = () => {
-  // const { data, mutate } = useSWR(createClient);
-
   return (
-    <div className="">
-      <main className="w-full flex">
-        <div className="relative flex-1 hidden items-center justify-center bg-gray-900 lg:flex">
-          <div className="relative z-10 w-full max-w-md">
-            <h2 className="tracking-tighter font-bold text-3xl text-indigo-600">
-              CWM by Devigs
-            </h2>
-            <div className=" mt-5 space-y-3">
-              <h3 className="text-white text-3xl font-bold">
-                Start growing your business quickly
-              </h3>
-              <p className="text-gray-300">
-                Create an account and get access to all features to manage your
-                waste.
-              </p>
-              <div className="flex items-center -space-x-2 overflow-hidden">
-                <img
-                  src="https://randomuser.me/api/portraits/women/79.jpg"
-                  className="w-10 h-10 rounded-full border-2 border-white"
-                />
-                <img
-                  src="https://api.uifaces.co/our-content/donated/xZ4wg2Xj.jpg"
-                  className="w-10 h-10 rounded-full border-2 border-white"
-                />
-                <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=a72ca28288878f8404a795f39642a46f"
-                  className="w-10 h-10 rounded-full border-2 border-white"
-                />
-                <img
-                  src="https://randomuser.me/api/portraits/men/86.jpg"
-                  className="w-10 h-10 rounded-full border-2 border-white"
-                />
-                <img
-                  src="https://images.unsplash.com/photo-1510227272981-87123e259b17?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=3759e09a5b9fbe53088b23c615b6312e"
-                  className="w-10 h-10 rounded-full border-2 border-white"
-                />
-                <p className="text-sm text-gray-400 font-medium translate-x-5">
-                  Join 5.000+ users
-                </p>
-              </div>
+    <div className="w-[50%] h-[90vh] flex justify-start items-center max-md:w-full max-md:justify-center">
+      <div className="w-[48%] h-[80%] flex flex-col gap-2 max-lg:w-[310px]">
+        {/* top */}
+        <div className="w-full h-[90%]  bg-gradient-to-r from-indigo-500 to-orange-500  p-[1.2px]">
+          <div className="w-full flex flex-col justify-center h-full bg-white py-7 px-8">
+            {/* logo */}
+            <div className="w-full grid place-items-center mb-6">
+              <img src={logo} alt="twma logo" width={150} height={150} />
             </div>
-          </div>
-          <div className="absolute inset-0 my-auto bg-primaryColor"></div>
-        </div>
-        <div className="flex-1 flex items-center justify-center h-screen">
-          <div className="w-full max-w-md space-y-8 px-4 bg-white text-gray-600 sm:px-0">
-            <div className="">
-              <h2 className="lg:hidden text-2xl font-bold">CWM by Devigs</h2>
-              <div className="mt-5 space-y-2">
-                <h3 className="text-gray-800 text-2xl font-bold sm:text-3xl">
-                  Sign up
-                </h3>
-                <p className="flex gap-2">
-                  Already have an account?
-                  <Link to="login">
-                    <a className="font-medium text-indigo-500 hover:text-indigo-500">
-                      Log in
-                    </a>
-                  </Link>
-                </p>
-              </div>
-            </div>
-
-            <form onSubmit={(e) => e.preventDefault()} className="space-y-5">
-              <div>
-                <label className="font-medium">Name</label>
+            {/* form */}
+            <form className="flex flex-col gap-2">
+              <label className="relative bg-[#f5f5f5] block overflow-hidden border border-gray-200 px-3 pt-3 shadow-sm focus-within:border-[var(--primary-color)] focus-within:ring-1 focus-within:ring-[var(--primary-color)]">
                 <input
                   type="text"
                   required
-                  className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-500 shadow-sm rounded-lg"
+                  placeholder="your name"
+                  className="peer  h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
                 />
-              </div>
-              <div>
-                <label className="font-medium">Email</label>
+
+                <span className="absolute start-3 top-3 -translate-y-1/2 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-3 peer-focus:text-xs">
+                  Username
+                </span>
+              </label>
+
+              {/* user mail */}
+              <label className="relative bg-[#f5f5f5] block overflow-hidden border border-gray-200 px-3 pt-3 shadow-sm focus-within:border-[var(--primary-color)] focus-within:ring-1 focus-within:ring-[var(--primary-color)]">
                 <input
-                  type="email"
+                  type="text"
+                  placeholder="Your email"
                   required
-                  className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-500 shadow-sm rounded-lg"
+                  className="peer  h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
                 />
-              </div>
+
+                <span className="absolute start-3 top-3 -translate-y-1/2 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-3 peer-focus:text-xs">
+                  Email
+                </span>
+              </label>
+
+              {/* select ward */}
               <div>
-                <label className="font-medium">Password</label>
+                <label
+                  htmlFor="HeadlineAct"
+                  className="block text-sm bg-[#f5f5f5] font-medium text-gray-900  border-x border-t border-gray-200 px-3 pt-3 "
+                >
+                  Select Ward
+                </label>
+
+                <div className="relative bg-[#f5f5f5] border-x border-b border-gray-200 px-3">
+                  <input
+                    type="text"
+                    list="HeadlineActArtist"
+                    id="HeadlineAct"
+                    required
+                    className="w-full bg-[#f5f5f5] outline-0 py-2 rounded-lg border-gray-300 pe-10 text-gray-700 sm:text-sm [&::-webkit-calendar-picker-indicator]:opacity-0"
+                    placeholder="Please select"
+                  />
+
+                  <span className="absolute inset-y-0 end-0 flex w-8 items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.5"
+                      stroke="currentColor"
+                      className="h-5 w-5 text-gray-500"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9"
+                      />
+                    </svg>
+                  </span>
+                </div>
+
+                <datalist id="HeadlineActArtist">
+                  <option value="SR">Sari Ward</option>
+                  <option value="AW">Apapa Ward</option>
+                </datalist>
+              </div>
+
+              {/* password */}
+              <label className="relative bg-[#f5f5f5] block overflow-hidden border border-gray-200 px-3 pt-3 shadow-sm focus-within:border-[var(--primary-color)] focus-within:ring-1 focus-within:ring-[var(--primary-color)]">
                 <input
                   type="password"
                   required
-                  className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-500 shadow-sm rounded-lg"
+                  placeholder="password"
+                  className="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
                 />
-              </div>
-              <button className="w-full px-4 py-2 text-white font-medium bg-indigo-500 hover:bg-indigo-500 active:bg-indigo-500 rounded-lg duration-150">
-                Create account
+
+                <span className="absolute start-3 top-3 -translate-y-1/2 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-3 peer-focus:text-xs">
+                  password
+                </span>
+              </label>
+
+              <button
+                type="submit"
+                className="mt-5 py-2 px-3 bg-[var(--primary-color)] text-indigo-500"
+              >
+                Register
               </button>
             </form>
           </div>
         </div>
-      </main>
+
+        {/* bottom */}
+        <div className="w-full h-[10%] bg-gradient-to-r from-indigo-500 to-orange-500  p-[1.2px]">
+          <div className="w-full h-full bg-white p-4 flex justify-center gap-1 text-sm">
+            Don't have an account?{" "}
+            <NavLink
+              to="/login"
+              className="text-[var(--accent-color)] font-semibold"
+            >
+              Sign up
+            </NavLink>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

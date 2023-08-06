@@ -3,6 +3,9 @@ import { userData } from "../types";
 
 const liveURI = "https://cwmendpoint-server.onrender.com/api/clientauth";
 
+// register: /clientregister
+// login: /clientlogin
+
 export interface login {
   email: string;
   password: string;
