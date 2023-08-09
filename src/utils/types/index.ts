@@ -8,9 +8,8 @@ export type navpropsData = {
 };
 
 export type userData = {
-  name: string;
   email: string;
-  password: string;
-  phoneNumber: number;
   address: string;
+  ward: string;
+  password: string;
 };

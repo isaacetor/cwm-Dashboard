@@ -5,7 +5,7 @@ import Footer from "../../blocks/homeblock/Footer";
 const AuthLayout = () => {
   return (
     <div>
-      <div className="flex gap-10">
+      <div className="flex gap-10 bg-white">
         <AuthHeader />
         <Outlet />
       </div>

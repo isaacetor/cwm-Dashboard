@@ -1,13 +1,34 @@
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/twma.png";
+import { useRegister } from "../../hooks/useRegister";
+import { useState } from "react";
 
 const Register = () => {
+  const [formdata, setFormdata] = useState({
+    ward: "",
+    email: "",
+    password: "",
+    address: "",
+  });
+
+  const { register, loading } = useRegister();
+
+  const handleRegister = async (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    await register({
+      email: formdata.email,
+      password: formdata.password,
+      ward: formdata.ward,
+      address: formdata.address,
+    });
+  };
+
   return (
-    <div className="w-[50%] h-[90vh] flex justify-start items-center max-md:w-full max-md:justify-center">
+    <div className="w-[50%] h-[90vh]  flex justify-start items-center max-md:w-full max-md:justify-center">
       <div className="w-[48%] h-[80%] flex flex-col gap-2 max-lg:w-[310px] max-sm:w-full">
         {/* top */}
         <div className="w-full h-[90%]  bg-gradient-to-r from-indigo-500 to-orange-500  p-[1.2px] max-md:bg-none max-md:h-full">
-          <div className="w-full flex flex-col justify-center h-full bg-white py-7 px-8">
+          <div className="w-full flex flex-col justify-center h-full bg-white py-7 px-8 max-md:py-3">
             {/* logo */}
             <div className="w-full grid place-items-center mb-6">
               <img src={logo} alt="twma logo" width={150} height={150} />
@@ -19,14 +40,18 @@ const Register = () => {
             >
               <label className="relative bg-[#f5f5f5] block overflow-hidden border border-gray-200 px-3 pt-3 shadow-sm focus-within:border-[var(--primary-color)] focus-within:ring-1 focus-within:ring-[var(--primary-color)]">
                 <input
-                  type="text"
+                  type="email"
                   required
-                  placeholder="your name"
+                  placeholder="your email"
                   className="peer  h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
+                  value={formdata.email}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    setFormdata({ ...formdata, email: e.target.value });
+                  }}
                 />
 
                 <span className="absolute start-3 top-3 -translate-y-1/2 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-3 peer-focus:text-xs">
-                  Username
+                  Your email
                 </span>
               </label>
 
@@ -34,13 +59,17 @@ const Register = () => {
               <label className="relative bg-[#f5f5f5] block overflow-hidden border border-gray-200 px-3 pt-3 shadow-sm focus-within:border-[var(--primary-color)] focus-within:ring-1 focus-within:ring-[var(--primary-color)]">
                 <input
                   type="text"
-                  placeholder="Your email"
+                  placeholder="Resident or office address"
                   required
                   className="peer  h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
+                  value={formdata.address}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    setFormdata({ ...formdata, address: e.target.value });
+                  }}
                 />
 
                 <span className="absolute start-3 top-3 -translate-y-1/2 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-3 peer-focus:text-xs">
-                  Email
+                  Resident or office address
                 </span>
               </label>
 
@@ -60,7 +89,8 @@ const Register = () => {
                     id="HeadlineAct"
                     required
                     className="w-full bg-[#f5f5f5] outline-0 py-2 rounded-lg border-gray-300 pe-10 text-gray-700 sm:text-sm [&::-webkit-calendar-picker-indicator]:opacity-0"
-                    placeholder="Please select"
+                    placeholder="Please select ward"
+                    value={formdata.ward}
                   />
 
                   <span className="absolute inset-y-0 end-0 flex w-8 items-center">
@@ -94,6 +124,10 @@ const Register = () => {
                   required
                   placeholder="password"
                   className="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
+                  value={formdata.password}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    setFormdata({ ...formdata, password: e.target.value });
+                  }}
                 />
 
                 <span className="absolute start-3 top-3 -translate-y-1/2 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-3 peer-focus:text-xs">
@@ -102,10 +136,12 @@ const Register = () => {
               </label>
 
               <button
-                type="submit"
+                // type="submit"
                 className="my-5 py-2 px-3 bg-[var(--primary-color)] text-white"
+                onClick={handleRegister}
+                disabled={loading ? true : false}
               >
-                Register
+                {loading ? "One moment, please..." : "Register"}
               </button>
             </form>
           </div>
