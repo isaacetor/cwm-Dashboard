@@ -6,7 +6,7 @@ import { RiLogoutCircleLine } from "react-icons/ri";
 
 const TabletHeader = () => {
   return (
-    <div className="w-full h-full hidden bg-primaryColor max-lg:block max-md:hidden">
+    <div className="w-[80px] h-screen hidden bg-[var(--primary-color)] max-lg:block max-md:hidden">
       <div className="w-full h-full flex items-center justify-center ">
         <div className="w-[95%] h-[95%] flex flex-col  items-center gap-6 ">
           {/* logo */}
