@@ -1,6 +1,6 @@
 const PaymentBlock = () => {
   return (
-    <div className="bg-orange-50 h-full rounded-3xl p-7 flex flex-col justify-between">
+    <div className="bg-orange-50 h-full rounded-3xl p-7 flex flex-col justify-between :w-full">
       <div>
         Arrears (NGN)
         <h2 className="text-5xl font-black max-md:text-3xl">20,000</h2>

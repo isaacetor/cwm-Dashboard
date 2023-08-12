@@ -13,8 +13,6 @@ const HomeLayout = () => {
          h-full sticky top-0`}
       >
         <Header />
-
-        {/* tablet header */}
         <TabletHeader />
 
         {/* mobile screen header */}

@@ -21,7 +21,7 @@ const Dashboard = () => {
           <div className="max-lg:order-2 col-span-2">
             <HistoryBlock />
           </div>
-          <div className="max-lg:order-1 h-full">
+          <div className="max-lg:order-1 h-full ">
             <PaymentBlock />
           </div>
         </div>

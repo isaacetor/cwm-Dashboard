@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import logo from "../../../../assets/twma.png";
 
 const MobileHeader = () => {
   const [state, setState] = useState(false);
 
-  // Replace javascript:void(0) paths with your paths
   const navigation = [
     { title: "Home", path: "" },
     { title: "Payment", path: "/dashboard/payment" },
@@ -13,19 +13,11 @@ const MobileHeader = () => {
   ];
 
   return (
-    <div className="w-full  bg-primaryColor  border-b sticky top-0 hidden max-md:block">
+    <div className="w-full  bg-[var(--primary-color)]  border-b sticky top-0 hidden max-md:block">
       <div className="w-full py-5  items-center justify-center">
         <div className="w-[95%] m-auto h-full flex justify-between items-center ">
           <a href="#">
-            {/* <img
-              src="https://www.floatui.com/logo.svg"
-              width={120}
-              height={50}
-              alt="Float UI logo"
-            /> */}
-            <h1 className="text-2xl text-white font-bold tracking-tighter ">
-              cwm
-            </h1>
+            <img src={logo} width={100} height={50} alt="TWMA UI logo" />
           </a>
           <div className="md:hidden">
             <button
@@ -90,7 +82,7 @@ const MobileHeader = () => {
               <li>
                 <a
                   href="javascript:void(0)"
-                  className="block py-3 px-4 font-medium text-center text-white bg-indigo-500  hover:text-white active:bg-indigo-700 active:shadow-none rounded-lg shadow md:inline"
+                  className="block py-3 px-4 font-medium text-center text-white bg-orange-500  hover:text-white active:bg-indigo-700 active:shadow-none rounded-lg shadow md:inline"
                 >
                   Log out
                 </a>
