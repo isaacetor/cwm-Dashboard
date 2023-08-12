@@ -76,11 +76,11 @@ button:focus-visible {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #4f46e5;
+  background-color: #ff6e00;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #3a31e9;
+  background-color: #fe740b;
 }
 
 @layer utilities {

@@ -3,11 +3,13 @@ import { userData } from "../utils/types";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 const liveURI = "https://twma-be.onrender.com/twma/";
 
 export const useRegister = () => {
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const register = async (data: userData) => {
     setLoading(true);
@@ -41,6 +43,7 @@ export const useRegister = () => {
           draggable: true,
           progress: undefined,
         });
+        navigate("/dashboard");
       });
   };
   return { loading, register };

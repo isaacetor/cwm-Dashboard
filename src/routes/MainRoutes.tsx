@@ -42,11 +42,11 @@ export const element = createBrowserRouter([
   {
     path: "/dashboard",
     element: (
-      <ProtectedRoute>
-        <Suspense fallback={<p>loading</p>}>
-          <DashboardLayout />
-        </Suspense>
-      </ProtectedRoute>
+      // <ProtectedRoute>
+      <Suspense fallback={<p>loading</p>}>
+        <DashboardLayout />
+      </Suspense>
+      // </ProtectedRoute>
     ),
     children: [
       {
