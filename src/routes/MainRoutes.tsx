@@ -9,7 +9,7 @@ import NotFound from "../utils/errorHandlers/NotFound";
 import { Suspense } from "react";
 import Bills from "../pages/home/Bills";
 import History from "../pages/home/History";
-import { ProtectedRoute, SignedInProtectedRoute } from "./ProtectedRoute";
+import { SignedInProtectedRoute } from "./ProtectedRoute";
 import AuthLayout from "../components/layout/auth/authlayout";
 
 // const DashboardLayout = import()

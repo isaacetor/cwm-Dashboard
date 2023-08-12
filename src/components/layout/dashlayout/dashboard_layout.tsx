@@ -3,21 +3,16 @@ import { Outlet } from "react-router-dom";
 import MobileHeader from "../../blocks/homeblock/headers/mobileHeader";
 import TabletHeader from "../../blocks/homeblock/headers/tabletHeader";
 import Notifications from "../../blocks/homeblock/notifications";
-import { useState } from "react";
-import SwitchHeader from "../../blocks/homeblock/headers/SwitchHeader";
 
 const HomeLayout = () => {
-  const [show, setSHow] = useState(true);
-
   return (
-    <div className=" max-h-full bg-gradient-to-b from-indigo-200 flex max-md:block">
+    <div className="max-h-full flex max-md:block">
       {/* header */}
       <div
-        className={`${
-          show ? "w-[17%]" : "w-[5%]"
-        } max-md:w-full h-screen max-md:h-full max-lg:w-[8%]  flex items-center justify-center sticky top-0 transition-all ease-linear duration-[200ms]`}
+        className={`
+         h-full sticky top-0`}
       >
-        {show ? <Header /> : <SwitchHeader />}
+        <Header />
 
         {/* tablet header */}
         <TabletHeader />
@@ -33,18 +28,6 @@ const HomeLayout = () => {
       {/* notification */}
       <div className="w-[25%] hidden transition-all ease-in duration-500 ">
         <Notifications />
-      </div>
-
-      {/* switch */}
-      <div
-        className={`py-3 transition-all ease-in duration-[200ms] px-2 bg-black text-white rounded-full absolute ${
-          show ? "left-[13rem]" : "left-[3rem]"
-        } top-16 max-lg:hidden cursor-pointer `}
-        onClick={() => {
-          setSHow(!show);
-        }}
-      >
-        click
       </div>
     </div>
   );

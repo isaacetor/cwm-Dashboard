@@ -21,7 +21,7 @@ const FeatureBlock: FC<navpropsData> = ({ icon, text, titleText, route }) => {
 
         {/* link */}
         <NavLink to={route}>
-          <p className="font-semibold text-[#4F46E5] hover:text-[#584ff3] ease-in transition-all">
+          <p className="font-semibold text-[var(--primary-color)] hover:text-[var(--prima-color)] ease-in transition-all">
             proceed
           </p>
         </NavLink>

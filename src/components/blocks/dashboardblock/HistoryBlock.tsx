@@ -42,13 +42,13 @@ const HistoryBlock = () => {
   ];
 
   return (
-    <div className="bg-gradient-to-b from-indigo-50">
+    <div className="bg-gradient-to-b from-orange-50">
       <div className="overflow-x-auto">
         {tableItems.length <= 0 ? (
           <>No Transactions yet</>
         ) : (
           <table className="w-full table-auto text-sm text-left">
-            <thead className="bg-indigo-100 text-gray-600 font-medium border-b">
+            <thead className="bg-orange-100 text-gray-600 font-medium border-b">
               <tr>
                 <th className="py-3 px-6">Name</th>
                 <th className="py-3 px-6">Address</th>
