@@ -3,9 +3,16 @@ import logo from "../../assets/twma.png";
 import { useRecoilState } from "recoil";
 import { tempUserData } from "../../global/RecoilState";
 import { useEffect } from "react";
+// import { fetcher } from "../../utils/swr/swr";
+import useSWR from "swr";
+import { fetcher } from "../../utils/api";
 
 const Register = () => {
   const [formdata, setFormdata] = useRecoilState(tempUserData);
+
+  const { data } = useSWR(`stationId`, fetcher);
+
+  console.log(`this is data`, data);
 
   // Load saved form data from local storage when component mounts
   useEffect(() => {
@@ -111,12 +118,13 @@ const Register = () => {
                       Please select PSP
                     </option>
                     <option value="">Please select PSP</option>
-                    <option value="Ikeja waste managers">
-                      Ikeja waste managers
-                    </option>
-                    <option value="continental waste managers">
-                      continental waste managers
-                    </option>
+                    {/* {data?.map((id: any) => (
+                      <div key={id}>
+                        <option value="Ikeja waste managers">
+                          Ikeja waste managers
+                        </option>
+                      </div>
+                    ))} */}
                   </select>
                 </div>
               </div>
