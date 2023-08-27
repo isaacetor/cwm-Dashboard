@@ -19,7 +19,7 @@ const Register = () => {
   };
 
   const isFormFilled =
-    formdata.address && formdata.name && formdata.email && formdata.psp !== "";
+    formdata.psp && formdata.address && formdata.name && formdata.email !== "";
 
   return (
     <div className="w-[50%] h-[90vh]  flex justify-start items-center max-md:w-full max-md:justify-center">
@@ -105,15 +105,17 @@ const Register = () => {
                     onChange={(e: any) => {
                       setFormdata({ ...formdata, psp: e.target.value });
                     }}
+                    value={formdata.psp}
                   >
-                    <option value={formdata.psp} disabled hidden>
+                    <option disabled hidden placeholder="Please select PSP">
                       Please select PSP
+                    </option>
+                    <option value="">Please select PSP</option>
+                    <option value="Ikeja waste managers">
+                      Ikeja waste managers
                     </option>
                     <option value="continental waste managers">
                       continental waste managers
-                    </option>
-                    <option value="Ikeja waste managers">
-                      Ikeja waste managers
                     </option>
                   </select>
                 </div>
