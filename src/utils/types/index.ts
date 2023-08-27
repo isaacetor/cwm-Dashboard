@@ -12,4 +12,6 @@ export type userData = {
   address: string;
   ward: string;
   password: string;
+  name: string;
+  psp: string;
 };

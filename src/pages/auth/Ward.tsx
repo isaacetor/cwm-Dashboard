@@ -1,33 +1,53 @@
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/twma.png";
-// import { useRegister } from "../../hooks/useRegister";
-// import { useState } from "react";
+import { useRegister } from "../../hooks/useRegister";
+import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { tempUserData } from "../../global/RecoilState";
 
 const Ward = () => {
-  // const [formdata, setFormdata] = useState({
-  //   ward: "",
-  //   email: "",
-  //   password: "",
-  //   address: "",
-  // });
-
   const [formdata, setFormdata] = useRecoilState(tempUserData);
+  const [confirmedPassword, setConfirmedPassword] = useState("");
+  const [passwordsMatch, setPasswordsMatch] = useState(true);
 
-  // const { register, loading } = useRegister();
+  const { register, loading } = useRegister();
 
-  // const handleRegister = async (e: React.SyntheticEvent) => {
-  //   e.preventDefault();
-  //   await register({
-  //     email: formdata.email,
-  //     password: formdata.password,
-  //     ward: formdata.ward,
-  //     address: formdata.address,
-  //   });
-  // };
+  const handleRegister = async (e: React.SyntheticEvent) => {
+    e.preventDefault();
+
+    // Update formdata with new values
+    const updatedFormData = {
+      ...formdata,
+      ward: formdata.ward,
+      password: formdata.password,
+    };
+    try {
+      // Call the register function with updated formdata
+      await register(updatedFormData);
+
+      // Clear tempUserData from local storage on successful registration
+      localStorage.removeItem("tempUserData");
+    } catch (error) {
+      // Handle registration error
+      console.log(`an error occured registering user`, error);
+    }
+  };
+
+  const handleConfirmPasswordChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const confirmedPwd = e.target.value;
+    setConfirmedPassword(confirmedPwd);
+    setPasswordsMatch(formdata.password === confirmedPwd);
+  };
 
   console.log(`this is userData`, formdata);
+
+  const isFormFilled =
+    passwordsMatch !== false &&
+    formdata.password &&
+    formdata.ward &&
+    confirmedPassword !== "";
 
   return (
     <div className="w-[50%] h-[90vh]  flex justify-start items-center max-md:w-full max-md:justify-center">
@@ -58,7 +78,10 @@ const Ward = () => {
                     id="HeadlineAct"
                     required
                     className="w-full bg-[#f5f5f5] outline-0 py-2 rounded-lg border-gray-300 pe-10 text-gray-700 sm:text-sm"
-                    // value={formdata.ward}
+                    onChange={(e: any) => {
+                      setFormdata({ ...formdata, ward: e.target.value });
+                    }}
+                    value={formdata.ward}
                   >
                     <option value="" disabled hidden>
                       Please Select Ward
@@ -75,7 +98,7 @@ const Ward = () => {
                   type="password"
                   placeholder="enter password"
                   required
-                  className="peer  h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
+                  className="peer lowercase  h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
                   value={formdata.password}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     setFormdata({ ...formdata, password: e.target.value });
@@ -88,36 +111,50 @@ const Ward = () => {
               </label>
 
               {/* confirm password */}
-              <label className="relative bg-[#f5f5f5] block overflow-hidden border border-gray-200 px-3 pt-3 shadow-sm focus-within:border-[var(--primary-color)] focus-within:ring-1 focus-within:ring-[var(--primary-color)]">
+              <label className="relative lowercase bg-[#f5f5f5] block overflow-hidden border border-gray-200 px-3 pt-3 shadow-sm focus-within:border-[var(--primary-color)] focus-within:ring-1 focus-within:ring-[var(--primary-color)]">
                 <input
                   type="password"
                   placeholder="confirm password"
                   required
-                  className="peer  h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
-                  //   value={formdata.address}
-                  //   onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                  //     setFormdata({ ...formdata, address: e.target.value });
-                  //   }}
+                  className="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
+                  value={confirmedPassword}
+                  onChange={handleConfirmPasswordChange}
                 />
-
                 <span className="absolute start-3 top-3 -translate-y-1/2 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-3 peer-focus:text-xs">
                   confirm password
                 </span>
               </label>
-              {/* jhdfj */}
+
+              {/* Add a check for password match */}
+              {!passwordsMatch && (
+                <p className="text-red-500 text-xs mt-1">
+                  Passwords do not match
+                </p>
+              )}
+
+              {/* register button */}
               <div className="flex flex-col mt-5 gap-2">
-                <button
-                  className=" py-2 px-3 bg-[var(--primary-color)] text-white"
-                  // type="submit"
-                  // onClick={handleRegister}
-                  // disabled={loading ? true : false}
-                >
-                  {/* {loading ? "One moment, please..." : "Register"} */}
-                  Register
-                </button>
+                {isFormFilled ? (
+                  <button
+                    className="py-2 px-3 bg-[var(--primary-color)] text-white"
+                    type="submit"
+                    onClick={handleRegister}
+                    disabled={loading}
+                  >
+                    {loading ? "One moment, please..." : "Register"}
+                  </button>
+                ) : (
+                  <button
+                    disabled
+                    className="mt-5 text-center py-2 px-3 bg-gray-300 text-gray-600 cursor-not-allowed"
+                  >
+                    Register
+                  </button>
+                )}
+
                 <NavLink
                   to="/"
-                  className=" text-center py-2 px-3 bg-[var(--accent-color)] text-white hover:text-white"
+                  className="text-center py-2 px-3 bg-[var(--accent-color)] text-white hover:text-white"
                 >
                   <button>Back</button>
                 </NavLink>

@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 
-const liveURI = "https://twma-be.onrender.com/twma/";
+const liveURI = "https://twma-be.onrender.com/twma";
 
 export const useRegister = () => {
   const [loading, setLoading] = useState(false);
@@ -28,6 +28,7 @@ export const useRegister = () => {
           draggable: true,
           progress: undefined,
         });
+        navigate("/dashboard");
 
         return res.data.data;
       })
@@ -43,7 +44,6 @@ export const useRegister = () => {
           draggable: true,
           progress: undefined,
         });
-        navigate("/dashboard");
       });
   };
   return { loading, register };

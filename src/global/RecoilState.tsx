@@ -11,3 +11,8 @@ export const tempUserData = atom({
     ward: "",
   },
 });
+
+export const newUserData = atom({
+  key: "Currentuser", // unique ID (with respect to other atoms/selectors)
+  default: {},
+});
