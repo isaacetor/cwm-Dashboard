@@ -1,27 +1,25 @@
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/twma.png";
-import { useRegister } from "../../hooks/useRegister";
-import { useState } from "react";
+import { useRecoilState } from "recoil";
+import { tempUserData } from "../../global/RecoilState";
+import { useEffect } from "react";
 
 const Register = () => {
-  const [formdata, setFormdata] = useState({
-    ward: "",
-    email: "",
-    password: "",
-    address: "",
-  });
+  const [formdata, setFormdata] = useRecoilState(tempUserData);
 
-  const { register, loading } = useRegister();
+  // Load saved form data from local storage when component mounts
+  useEffect(() => {
+    const savedData = JSON.parse(localStorage.getItem("tempUserData") || "{}");
+    setFormdata(savedData);
+  }, []);
 
-  const handleRegister = async (e: React.SyntheticEvent) => {
-    e.preventDefault();
-    await register({
-      email: formdata.email,
-      password: formdata.password,
-      ward: formdata.ward,
-      address: formdata.address,
-    });
+  // Save form data to local storage and Recoil state
+  const handleProceed = () => {
+    localStorage.setItem("tempUserData", JSON.stringify(formdata));
   };
+
+  const isFormFilled =
+    formdata.address && formdata.name && formdata.email && formdata.psp !== "";
 
   return (
     <div className="w-[50%] h-[90vh]  flex justify-start items-center max-md:w-full max-md:justify-center">
@@ -38,6 +36,23 @@ const Register = () => {
               className="flex flex-col gap-2"
               onSubmit={(e) => e.preventDefault()}
             >
+              <label className="relative bg-[#f5f5f5] block overflow-hidden border border-gray-200 px-3 pt-3 shadow-sm focus-within:border-[var(--primary-color)] focus-within:ring-1 focus-within:ring-[var(--primary-color)]">
+                <input
+                  type="text"
+                  required
+                  placeholder="your name"
+                  className="peer  h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
+                  value={formdata.name}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    setFormdata({ ...formdata, name: e.target.value });
+                  }}
+                />
+
+                <span className="absolute start-3 top-3 -translate-y-1/2 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-3 peer-focus:text-xs">
+                  Your Name
+                </span>
+              </label>
+              {/* email */}
               <label className="relative bg-[#f5f5f5] block overflow-hidden border border-gray-200 px-3 pt-3 shadow-sm focus-within:border-[var(--primary-color)] focus-within:ring-1 focus-within:ring-[var(--primary-color)]">
                 <input
                   type="email"
@@ -77,72 +92,49 @@ const Register = () => {
               <div>
                 <label
                   htmlFor="HeadlineAct"
-                  className="block text-sm bg-[#f5f5f5] font-medium text-gray-900  border-x border-t border-gray-200 px-3 pt-3 "
+                  className="block text-sm bg-[#f5f5f5] font-medium text-gray-900 border-x border-t border-gray-200 px-3 pt-3"
                 >
-                  Select Ward
+                  Select PSP
                 </label>
 
                 <div className="relative bg-[#f5f5f5] border-x border-b border-gray-200 px-3">
-                  <input
-                    type="text"
-                    list="HeadlineActArtist"
+                  <select
                     id="HeadlineAct"
                     required
-                    className="w-full bg-[#f5f5f5] outline-0 py-2 rounded-lg border-gray-300 pe-10 text-gray-700 sm:text-sm [&::-webkit-calendar-picker-indicator]:opacity-0"
-                    placeholder="Please select ward"
-                    value={formdata.ward}
-                  />
-
-                  <span className="absolute inset-y-0 end-0 flex w-8 items-center">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth="1.5"
-                      stroke="currentColor"
-                      className="h-5 w-5 text-gray-500"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9"
-                      />
-                    </svg>
-                  </span>
+                    className="w-full bg-[#f5f5f5] outline-0 py-2 rounded-lg border-gray-300 pe-10 text-gray-700 sm:text-sm"
+                    onChange={(e: any) => {
+                      setFormdata({ ...formdata, psp: e.target.value });
+                    }}
+                  >
+                    <option value={formdata.psp} disabled hidden>
+                      Please select PSP
+                    </option>
+                    <option value="continental waste managers">
+                      continental waste managers
+                    </option>
+                    <option value="Ikeja waste managers">
+                      Ikeja waste managers
+                    </option>
+                  </select>
                 </div>
-
-                <datalist id="HeadlineActArtist">
-                  <option value="SR">Sari Ward</option>
-                  <option value="AW">Apapa Ward</option>
-                </datalist>
               </div>
 
-              {/* password */}
-              <label className="relative bg-[#f5f5f5] block overflow-hidden border border-gray-200 px-3 pt-3 shadow-sm focus-within:border-[var(--primary-color)] focus-within:ring-1 focus-within:ring-[var(--primary-color)]">
-                <input
-                  type="password"
-                  required
-                  placeholder="password"
-                  className="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
-                  value={formdata.password}
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                    setFormdata({ ...formdata, password: e.target.value });
-                  }}
-                />
-
-                <span className="absolute start-3 top-3 -translate-y-1/2 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-3 peer-focus:text-xs">
-                  password
-                </span>
-              </label>
-
-              <button
-                // type="submit"
-                className="my-5 py-2 px-3 bg-[var(--primary-color)] text-white"
-                onClick={handleRegister}
-                disabled={loading ? true : false}
-              >
-                {loading ? "One moment, please..." : "Register"}
-              </button>
+              {isFormFilled ? (
+                <NavLink
+                  to="ward"
+                  className="mt-5 text-center py-2 px-3 bg-[var(--primary-color)] text-white hover:text-white"
+                  onClick={handleProceed}
+                >
+                  <button>Proceed</button>
+                </NavLink>
+              ) : (
+                <button
+                  disabled
+                  className="mt-5 text-center py-2 px-3 bg-gray-300 text-gray-600 cursor-not-allowed"
+                >
+                  Proceed
+                </button>
+              )}
             </form>
           </div>
         </div>

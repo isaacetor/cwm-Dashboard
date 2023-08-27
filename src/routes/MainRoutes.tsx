@@ -11,6 +11,7 @@ import Bills from "../pages/home/Bills";
 import History from "../pages/home/History";
 import { SignedInProtectedRoute } from "./ProtectedRoute";
 import AuthLayout from "../components/layout/auth/authlayout";
+import Ward from "../pages/auth/Ward";
 
 // const DashboardLayout = import()
 
@@ -28,6 +29,14 @@ export const element = createBrowserRouter([
       {
         index: true,
         element: <Register />,
+      },
+      {
+        path: "ward",
+        element: (
+          <Suspense fallback={<p>loading</p>}>
+            <Ward />
+          </Suspense>
+        ),
       },
       {
         path: "login",
