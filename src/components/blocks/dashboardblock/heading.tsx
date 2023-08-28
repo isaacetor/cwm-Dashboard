@@ -9,7 +9,7 @@ const Heading: FC<headerdata> = ({ title }) => {
   const [show, setShow] = useState(false);
 
   return (
-    <div className="w-full h-[10vh] bg-white flex items-center justify-between relative">
+    <div className="w-full h-[10vh] bg-white flex items-center justify-between relative max-md:w-[90%] max-md:m-auto">
       <h1 className="text-lg text-slate-400 font-medium">{title}</h1>
       <p
         className="text-4xl text-[#9EA5AD] "

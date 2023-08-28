@@ -1,7 +1,7 @@
 import axios from "axios";
 import { userData } from "../types";
 
-const liveURI = "https://twma-be.onrender.com/twma";
+export const liveURI = "https://twma-be.onrender.com/twma";
 
 export const createClient = async ({}: // name,
 // email,
@@ -21,18 +21,33 @@ userData) => {
 };
 
 export const useStations = async () => {
-  return await axios
-    .get(`${liveURI}/stations/all-stations`)
-    .then((res) => res.data)
-    .catch((err) => err);
-};
-
-export const fetcher = async () => {
   try {
     const response = await axios.get(`${liveURI}/stations/all-stations`);
-    return response.data;
+    return response.data.data;
   } catch (error) {
     // Handle error if needed
     throw error;
   }
+};
+
+// get all psps
+
+export const getPSPS = async () => {
+  try {
+    const response = await axios.get(`${liveURI}/admin-auth/`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getOneAdmin = async (adminId: string) => {
+  return await axios
+    .get(`${liveURI}/admin-auth/${adminId}`)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      throw err;
+    });
 };

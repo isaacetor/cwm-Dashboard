@@ -3,16 +3,15 @@ import logo from "../../assets/twma.png";
 import { useRecoilState } from "recoil";
 import { tempUserData } from "../../global/RecoilState";
 import { useEffect } from "react";
-// import { fetcher } from "../../utils/swr/swr";
 import useSWR from "swr";
-import { fetcher } from "../../utils/api";
+import { getPSPS } from "../../utils/api";
 
 const Register = () => {
   const [formdata, setFormdata] = useRecoilState(tempUserData);
 
-  const { data } = useSWR(`stationId`, fetcher);
+  const { data } = useSWR(`PspID`, getPSPS);
 
-  console.log(`this is data`, data);
+  // console.log(`this is data`, data?.data);
 
   // Load saved form data from local storage when component mounts
   useEffect(() => {
@@ -114,17 +113,15 @@ const Register = () => {
                     }}
                     value={formdata.psp}
                   >
-                    <option disabled hidden placeholder="Please select PSP">
+                    <option disabled hidden>
                       Please select PSP
                     </option>
-                    <option value="">Please select PSP</option>
-                    {/* {data?.map((id: any) => (
-                      <div key={id}>
-                        <option value="Ikeja waste managers">
-                          Ikeja waste managers
-                        </option>
-                      </div>
-                    ))} */}
+
+                    {data?.data?.map((props: any) => (
+                      <option value={props?.pspName} key={props?._id}>
+                        {props?.pspName}
+                      </option>
+                    ))}
                   </select>
                 </div>
               </div>
@@ -135,14 +132,14 @@ const Register = () => {
                   className="mt-5 text-center py-2 px-3 bg-[var(--primary-color)] text-white hover:text-white"
                   onClick={handleProceed}
                 >
-                  <button>Proceed</button>
+                  <button>Next</button>
                 </NavLink>
               ) : (
                 <button
                   disabled
                   className="mt-5 text-center py-2 px-3 bg-gray-300 text-gray-600 cursor-not-allowed"
                 >
-                  Proceed
+                  Next
                 </button>
               )}
             </form>

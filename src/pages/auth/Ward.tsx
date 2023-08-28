@@ -4,11 +4,18 @@ import { useRegister } from "../../hooks/useRegister";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { tempUserData } from "../../global/RecoilState";
+// import { getOneAdmin } from "../../utils/api";
+// import useSWR from "swr";
+// import axios from "axios";
+// import { getPSPS } from "../../utils/api";
 
 const Ward = () => {
   const [formdata, setFormdata] = useRecoilState(tempUserData);
   const [confirmedPassword, setConfirmedPassword] = useState("");
   const [passwordsMatch, setPasswordsMatch] = useState(true);
+  // const [stationWard, setStationWard] = useState([]);
+
+  // const { data } = useSWR(`PspID`, getPSPS);
 
   const { register, loading } = useRegister();
 
@@ -28,7 +35,6 @@ const Ward = () => {
       // Clear tempUserData from local storage on successful registration
       localStorage.removeItem("tempUserData");
     } catch (error) {
-      // Handle registration error
       console.log(`an error occured registering user`, error);
     }
   };
@@ -86,8 +92,9 @@ const Ward = () => {
                     <option value="" disabled hidden>
                       Please Select Ward
                     </option>
-                    <option value="Sari Ward">Sari ward</option>
-                    <option value="Apapa Ward">Apapa ward</option>
+                    {/* {stationWard?.map((el: any) => (
+                      <option value="Sari Ward">{el?.ward} </option>
+                    ))} */}
                   </select>
                 </div>
               </div>
