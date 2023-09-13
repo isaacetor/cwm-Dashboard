@@ -41,11 +41,12 @@ export const getPSPS = async () => {
   }
 };
 
-export const getOneAdmin = async (adminId: string) => {
+export const getOneAdmin = async () => {
   return await axios
-    .get(`${liveURI}/admin-auth/${adminId}`)
+    .get(`${liveURI}/admin-auth/64fb1b39b343e01e60c7abc8/`)
     .then((res) => {
-      return res.data;
+      // return res.data;
+      console.log("yhe data", res.data);
     })
     .catch((err) => {
       throw err;

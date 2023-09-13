@@ -1,12 +1,16 @@
 import FeatureBlock from "./featureBlock";
-import { TbRecycle, TbCurrencyNaira } from "react-icons/tb";
+import { TbRecycle } from "react-icons/tb";
+import { GrAnnounce } from "react-icons/gr";
 import { BiSolidHelpCircle } from "react-icons/bi";
 import { greetUser } from "../../../reusables/greetingFunction";
 import { useState } from "react";
-import CustomRequest from "../../../modal/customRequest";
+import CreateWard from "../../../modal/createWard";
+import { useRecoilValue } from "recoil";
+import { new_user } from "../../../global/RecoilState";
 
 const RecomendedLinks = () => {
   const [state, setState] = useState(false);
+  const activeUser = useRecoilValue(new_user);
 
   const toggle = () => {
     setState(!state);
@@ -16,16 +20,16 @@ const RecomendedLinks = () => {
     <div className="py-7 bg-white ">
       <div className="grid h-full gap-3 grid-cols-5 max-lg:grid-cols-4 max-md:block max-md:grid-cols-2">
         <div className="col-span-2 flex justify-center flex-col h-full text-slate-700">
-          <h1 className="text-3xl">{greetUser("Isaac")}</h1>
+          <h1 className="text-3xl">{greetUser(activeUser.name)}</h1>
           <p className="text-gray-500 font-light">
             Welcome to your dashboard. See a quick summary of your transactions
             below.
           </p>
         </div>
         <FeatureBlock
-          icon={<TbCurrencyNaira />}
-          text="renew your monthly waste bill"
-          titleText="Make a payment"
+          icon={<GrAnnounce />}
+          text="send an annoucement to your wards"
+          titleText="Send message"
           route=""
         />
         {/* custom request */}
@@ -33,8 +37,8 @@ const RecomendedLinks = () => {
         <div onClick={toggle}>
           <FeatureBlock
             icon={<BiSolidHelpCircle />}
-            text="request for waste evacuation"
-            titleText="make custom request"
+            text="update the wards you cover"
+            titleText="Create Ward"
             route=""
           />
         </div>
@@ -47,7 +51,7 @@ const RecomendedLinks = () => {
         />
       </div>
 
-      {state ? <CustomRequest state={state} setState={setState} /> : null}
+      {state ? <CreateWard state={state} setState={setState} /> : null}
     </div>
   );
 };

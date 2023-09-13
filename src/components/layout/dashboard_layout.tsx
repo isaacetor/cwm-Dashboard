@@ -1,8 +1,8 @@
-import Header from "../../blocks/homeblock/headers/Header";
+import Header from "../blocks/homeblock/headers/Header";
 import { Outlet } from "react-router-dom";
-import MobileHeader from "../../blocks/homeblock/headers/mobileHeader";
-import TabletHeader from "../../blocks/homeblock/headers/tabletHeader";
-import Notifications from "../../blocks/homeblock/notifications";
+import MobileHeader from "../blocks/homeblock/headers/mobileHeader";
+import TabletHeader from "../blocks/homeblock/headers/tabletHeader";
+import Notifications from "../blocks/homeblock/notifications";
 
 const HomeLayout = () => {
   return (

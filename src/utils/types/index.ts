@@ -8,10 +8,27 @@ export type navpropsData = {
 };
 
 export type userData = {
-  email: string;
-  address: string;
-  ward: string;
-  password: string;
+  email?: string;
   name: string;
-  psp: string;
+  password: string;
+};
+
+export type userDetails = {
+  _id: string;
+  name: string;
+  email: string;
+  account_number: string;
+  station: any;
+  users: string;
+  phoneNum: string;
+  pspName: string;
+  officeAddress: string;
+  password: string;
+  isAuthenticated: boolean;
+};
+export type userOnboarding = {
+  station: any;
+  phoneNum: string;
+  pspName: string;
+  officeAddress: string;
 };

@@ -1,66 +1,18 @@
-import axios from "axios";
-import { userData, userOnboarding } from "../utils/types";
-import { useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useNavigate } from "react-router-dom";
-import { useRecoilState } from "recoil";
-import { new_user } from "../global/RecoilState";
+import { useState } from "react";
+import axios from "axios";
 
-// const liveURI = "https://twma-be.onrender.com/twma";
 const liveURI = "http://localhost:3333/twma";
 
-export const useRegister = () => {
+export const usePost = () => {
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
 
-  const register = async (data: userData) => {
+  const PostData = async (data: any, user_id: string, admin_id: string) => {
     setLoading(true);
 
     return await axios
-      .post(`${liveURI}/admin-auth/register`, data)
-      .then((res) => {
-        // console.log(res.data.data);
-        setLoading(false);
-        toast.success(res.data.message, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-        navigate("/login");
-
-        return res.data.data;
-      })
-      .catch((error: any) => {
-        console.log(error.message);
-        setLoading(false);
-        toast.error("something went wrong!", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-      });
-  };
-  return { loading, register };
-};
-export const useSignIn = () => {
-  const [loading, setLoading] = useState(false);
-  const [newuser, setNewUser] = useRecoilState(new_user);
-  const navigate = useNavigate();
-
-  const register = async (data: userData) => {
-    setLoading(true);
-
-    return await axios
-      .post(`${liveURI}/admin-auth/login`, data)
+      .post(`${liveURI}/admin-msg/message-user/${admin_id}/${user_id}`, data)
       .then((res) => {
         setLoading(false);
         toast.success(res.data.message, {
@@ -73,21 +25,6 @@ export const useSignIn = () => {
           progress: undefined,
         });
 
-        setNewUser(res.data.data);
-
-        if (
-          newuser.pspName &&
-          newuser.station &&
-          newuser.officeAddress &&
-          newuser.phoneNum === ""
-        ) {
-          navigate("/onboarding");
-          newuser.isAuthenticated = true;
-        } else {
-          navigate("/dashboard");
-        }
-
-        // navigate("/onboarding");
         return res.data.data;
       })
       .catch((error: any) => {
@@ -105,19 +42,16 @@ export const useSignIn = () => {
         });
       });
   };
-  return { loading, register };
+  return { loading, PostData };
 };
-
-export const useOnboarding = () => {
+export const useWard = () => {
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
-  const [newuser, setNewUser] = useRecoilState(new_user);
 
-  const Onboarding = async (data: userOnboarding, id: string) => {
+  const PostData = async (data: any, user_id: string, admin_id: string) => {
     setLoading(true);
 
     return await axios
-      .patch(`${liveURI}/admin-auth/onboarding/${id}`, data)
+      .post(`${liveURI}/admin-msg/message-user/${admin_id}/${user_id}`, data)
       .then((res) => {
         setLoading(false);
         toast.success(res.data.message, {
@@ -130,12 +64,8 @@ export const useOnboarding = () => {
           progress: undefined,
         });
 
-        setNewUser(res.data.data);
-
-        navigate("/dashboard");
-
-        // return res.data.data;
-        console.log(`this is data, ${res.data.data}`);
+        return res.data.data;
+        // console.log(`this is data, ${res.data.data}`);
       })
       .catch((error: any) => {
         console.log(error.message);
@@ -152,5 +82,44 @@ export const useOnboarding = () => {
         });
       });
   };
-  return { loading, Onboarding };
+  return { loading, PostData };
+};
+export const useCreateWard = () => {
+  const [loading, setLoading] = useState(false);
+
+  const wardData = async (data: any, admin_id: string) => {
+    setLoading(true);
+
+    return await axios
+      .post(`${liveURI}/stations/new-station/${admin_id}`, data)
+      .then((res) => {
+        setLoading(false);
+        toast.success(res.data.message, {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
+        return res.data.data;
+      })
+      .catch((error: any) => {
+        console.log(error.message);
+        console.log(error);
+        setLoading(false);
+        toast.error("something went wrong!", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      });
+  };
+  return { loading, wardData };
 };

@@ -1,12 +1,35 @@
 import { FC, useState } from "react";
+import location from "../assets/location-pin.svg";
+import { useRecoilValue } from "recoil";
+import { new_user } from "../global/RecoilState";
+import { useCreateWard } from "../hooks/usePost";
 
 type stateData = {
   state: boolean;
   setState: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const CustomRequest: FC<stateData> = ({ state, setState }) => {
+const CreateWard: FC<stateData> = ({ state, setState }) => {
   [state, setState] = useState(true);
+
+  const [formdata, setFormdata] = useState({
+    ward: "",
+  });
+
+  const { _id } = useRecoilValue(new_user);
+
+  const { wardData, loading } = useCreateWard();
+
+  const handleMessage = async (e: React.SyntheticEvent) => {
+    e.preventDefault();
+
+    try {
+      // Call the register function with updated formdata
+      await wardData(formdata, _id);
+    } catch (error) {
+      console.log(`an error occured registering user`, error);
+    }
+  };
 
   return state ? (
     <div className="fixed inset-0 z-10 overflow-y-auto">
@@ -37,37 +60,31 @@ const CustomRequest: FC<stateData> = ({ state, setState }) => {
           </div>
           <div className="max-w-sm mx-auto py-3 space-y-3 text-center">
             <h4 className="text-lg capitalize font-medium text-gray-800">
-              Request our service
+              Create Ward Request
             </h4>
             <p className="text-[15px] text-gray-600">
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+              Here you can create all the wards that your PSP covers
             </p>
-            <form onSubmit={(e) => e.preventDefault()}>
+            <form onSubmit={handleMessage}>
               <div className="relative">
-                <svg
+                <img
+                  src={location}
+                  alt="location"
                   className="w-6 h-6 text-gray-400 absolute left-3 inset-y-0 my-auto"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
-                  />
-                </svg>
-                <textarea
-                  rows={1.5}
-                  cols={30}
-                  placeholder="Enter your email"
+                />
+                <input
+                  placeholder="Enter ward name..."
                   className="w-full pl-12 pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:indigo-indigo-600 shadow-sm rounded-lg"
+                  onChange={(e: any) => {
+                    setFormdata(e.target.value);
+                  }}
                 />
               </div>
-              <button className="block capitalize w-full mt-3 py-3 px-4 font-medium text-sm text-center text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 rounded-lg ring-offset-2 ring-indigo-600 focus:ring-2">
-                send request
+              <button
+                type="submit"
+                className="block capitalize w-full mt-3 py-3 px-4 font-medium text-sm text-center text-white bg-[var(--primary-color)] hover:bg-[var(--primary-color)] active:bg-[var(--primary-color)] rounded-lg ring-offset-2 ring-indigo-600 focus:ring-2"
+              >
+                {loading ? "creating ward..." : "create new ward"}
               </button>
             </form>
           </div>
@@ -77,4 +94,4 @@ const CustomRequest: FC<stateData> = ({ state, setState }) => {
   ) : null;
 };
 
-export default CustomRequest;
+export default CreateWard;

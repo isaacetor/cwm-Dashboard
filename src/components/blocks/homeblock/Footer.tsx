@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <div className="grid place-items-center bg-white">
+    <div className="grid place-items-center ">
       © copyright {new Date().getFullYear()} TWMA
     </div>
   );

@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import DashboardLayout from "../components/layout/dashlayout/dashboard_layout";
+import DashboardLayout from "../components/layout/dashboard_layout";
 import Register from "../pages/auth/Register";
 import Dashboard from "../pages/home/dashboard";
 import ErrorBoundary from "../utils/errorHandlers/errorboundary";
@@ -10,10 +10,11 @@ import { Suspense } from "react";
 import Bills from "../pages/home/Bills";
 import History from "../pages/home/History";
 import { SignedInProtectedRoute } from "./ProtectedRoute";
-import AuthLayout from "../components/layout/auth/authlayout";
-import Ward from "../pages/auth/Ward";
-
-// const DashboardLayout = import()
+import AuthLayout from "../components/layout/authlayout";
+import Onboarding from "../pages/auth/Onboarding";
+import MessageLayout from "../components/layout/MessageLayout";
+import MessageResident from "../pages/home/MessageResident";
+import Wards from "../pages/home/Wards";
 
 export const element = createBrowserRouter([
   {
@@ -30,14 +31,7 @@ export const element = createBrowserRouter([
         index: true,
         element: <Register />,
       },
-      {
-        path: "ward",
-        element: (
-          <Suspense fallback={<p>loading</p>}>
-            <Ward />
-          </Suspense>
-        ),
-      },
+
       {
         path: "login",
         element: (
@@ -97,10 +91,40 @@ export const element = createBrowserRouter([
           </Suspense>
         ),
       },
+      {
+        path: "wards",
+        element: (
+          <Suspense fallback={<p>loading</p>}>
+            <Wards />
+          </Suspense>
+        ),
+      },
+      {
+        path: "message",
+        element: (
+          <Suspense fallback={<p>loading</p>}>
+            <MessageLayout />
+          </Suspense>
+        ),
+        children: [
+          {
+            index: true,
+            element: <MessageResident />,
+          },
+        ],
+      },
     ],
   },
   {
     path: "*",
     element: <NotFound />,
+  },
+  {
+    path: "onboarding",
+    element: (
+      <Suspense fallback={<p>loading</p>}>
+        <Onboarding />
+      </Suspense>
+    ),
   },
 ]);

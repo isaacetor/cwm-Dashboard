@@ -1,12 +1,26 @@
 import Navprop from "../../../props/navprop";
-import { MdDashboard, MdOutlinePayment, MdManageHistory } from "react-icons/md";
+import {
+  MdDashboard,
+  MdOutlinePayment,
+  MdManageHistory,
+  MdOutlineAddHome,
+} from "react-icons/md";
 import { BiHeart } from "react-icons/bi";
 import { RiLogoutCircleLine } from "react-icons/ri";
 import { BsArrowLeftRight, BsReceipt } from "react-icons/bs";
 import { useState } from "react";
+import { useRecoilState } from "recoil";
+import { log_out } from "../../../../global/RecoilState";
+import { useNavigate } from "react-router-dom";
+import { TiMessages } from "react-icons/ti";
 
 const Header = () => {
   const [show, setShow] = useState(true);
+  const [auth, setAuth] = useRecoilState(log_out);
+
+  const handleLogout = () => {
+    setAuth({ isAuthenticated: false, user: null });
+  };
 
   return (
     <div
@@ -56,14 +70,21 @@ const Header = () => {
                 icon={<MdDashboard />}
                 route=""
                 color={show ? "[#ff6e00]" : "white"}
-                size={show ? "xl" : "4xl"}
+                size={show ? "xl" : "3xl"}
+              />
+              <Navprop
+                text={show ? "Wards" : ""}
+                icon={<MdOutlineAddHome />}
+                route="wards"
+                color={show ? "[#ff6e00]" : "white"}
+                size={show ? "xl" : "3xl"}
               />
               <Navprop
                 text={show ? "Payment" : ""}
                 icon={<MdOutlinePayment />}
                 route="payment"
                 color={show ? "[#ff6e00]" : "white"}
-                size={show ? "xl" : "4xl"}
+                size={show ? "xl" : "3xl"}
               />
             </div>
             <br />
@@ -75,18 +96,25 @@ const Header = () => {
               } transition-all ease-in duration-200`}
             >
               <Navprop
+                text={show ? "Message" : ""}
+                icon={<TiMessages />}
+                route="message"
+                color={show ? "[#ff6e00]" : "white"}
+                size={show ? "xl" : "3xl"}
+              />
+              <Navprop
                 text={show ? "Bills" : ""}
                 icon={<BsReceipt />}
                 route="bills"
                 color={show ? "[#ff6e00]" : "white"}
-                size={show ? "xl" : "4xl"}
+                size={show ? "xl" : "3xl"}
               />
               <Navprop
                 text={show ? "History" : ""}
                 icon={<MdManageHistory />}
                 route="history"
                 color={show ? "[#ff6e00]" : "white"}
-                size={show ? "xl" : "4xl"}
+                size={show ? "xl" : "3xl"}
               />
             </div>
           </div>
@@ -104,16 +132,18 @@ const Header = () => {
                   icon={<BiHeart />}
                   route=""
                   color={show ? "[#ff6e00]" : "white"}
-                  size={show ? "xl" : "4xl"}
+                  size={show ? "xl" : "3xl"}
                 />
               </a>
-              <Navprop
-                text={show ? "log out" : ""}
-                icon={<RiLogoutCircleLine />}
-                route=""
-                color={show ? "[#ff6e00]" : "white"}
-                size={show ? "xl" : "4xl"}
-              />
+              <p onClick={handleLogout}>
+                <Navprop
+                  text={show ? "log out" : ""}
+                  icon={<RiLogoutCircleLine />}
+                  route=""
+                  color={show ? "[#ff6e00]" : "white"}
+                  size={show ? "xl" : "3xl"}
+                />
+              </p>
             </div>
           </div>
 
